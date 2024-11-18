@@ -1,0 +1,56 @@
+{% extends 'todo/main.html' %}
+
+{% block content %}
+
+<div class="header-bar">
+    
+    <h1>To-Do List</h1>
+    <p> Hey {{ request.user|title }},You have <i>{{ count }} incomplete task{{ count|pluralize:'s' }}</i></p>
+    {% if request.user.is_authenticated %}
+    <form action="{% url 'logout' %}" method="post" class="logout-form">
+        {% csrf_token %}
+        <input class="logout-button" type="submit" value="Logout">
+    </form>
+    {% else %}
+    <a href="{% url 'login' %}" class="login-button">Login</a>
+    {% endif %}
+</div>
+
+<div id="search-add-wrapper">
+    <form action="" method="get" class="search-form">
+        <input type="text" name="search-area" placeholder="Search Tasks" class="search-input">
+        <input class="button search-button" type="submit" value="Search">
+    </form>
+    <a href="{% url 'task-create' %}" class="add-task-button">+ Add Task</a>
+</div>
+
+<div class="task-list">
+    {% for tasks in task %}
+    <div class="task-item">
+        {% if tasks.image %}
+            <img src="{{ tasks.image.url }}" alt="{{ tasks.title }}" class="task-image">
+        {% else %}
+              <div class="task-noimage"><h2>No Image</h2></div>
+        {% endif %}
+        <div class="task-details">
+            <h3>{{ tasks.title }}</h3>
+            <p>{{ tasks.description }}</p>
+            <div class="task-actions">
+                {% if tasks.complete %}
+                <span class="task-complete-icon">Completed</span>
+                <s><a href="{% url 'tasks-update' tasks.id %}" class="task-link"> Update</a></s>
+                {% else %}
+                <span class="task-incomplete-icon">Incomplete</span>
+                <a href="{% url 'tasks-update' tasks.id %}" class="task-link">Update</a>
+                {% endif %}
+            </div>
+        </div>
+        <a class="delete-link" href="{% url 'tasks-delete' tasks.id %}">Delete</a>
+    </div>
+    {% empty %}
+    <h3>No tasks found</h3>
+    <a href="{% url 'task-create' %}" class="add-task-prompt">Add a New Task</a>
+    {% endfor %}
+</div>
+
+{% endblock content %}
