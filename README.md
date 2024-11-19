@@ -17,14 +17,13 @@ Before you begin, ensure you have the following installed on your local machine:
 
 ## Installation
 
-## Step 1: Clone the Repository
+Step 1: Clone the Repository
 Clone the repository to your local machine:
-```bash
 git clone https://github.com/Mohammed-Haarish/Todolist_User_Authentication_django.git
 cd Todolist_User_Authentication_django
 
 
-##Step 2: Create and Activate a Virtual Environment
+Step 2: Create and Activate a Virtual Environment
 Create a virtual environment to manage dependencies:
 
 Windows:
@@ -34,20 +33,20 @@ macOS/Linux:
 python3 -m venv env
 source env/bin/activate
 
-##Step 3: Install Dependencies
+Step 3: Install Dependencies
 Install all the required dependencies using requirements.txt:
 pip install -r requirements.txt
 
-##Step 4: Set Up the Database
+Step 4: Set Up the Database
 Run the migrations to set up your database schema:
 python manage.py migrate
 
-##Step 5: Create a Superuser (Optional)
+Step 5: Create a Superuser (Optional)
 To manage users and view the admin dashboard, create a superuser:
 python manage.py createsuperuser
 Follow the prompts to create the admin account.
 
-##Step 6: Run the Development Server
+Step 6: Run the Development Server
 Start the Django development server:
 python manage.py runserver
 
