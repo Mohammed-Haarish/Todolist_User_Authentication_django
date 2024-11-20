@@ -26,15 +26,15 @@ git clone https://github.com/Mohammed-Haarish/Todolist_User_Authentication_djang
 cd Todolist_User_Authentication_django
 
 ```
-# step2: For Windows:
+# step 2: For Windows:
 ```python -m venv env
 env\Scripts\activate
 
-# For macOS/Linux:
 ```
-python3 -m venv env
+# For macOS/Linux:
+```python3 -m venv env
 source env/bin/activate
-
+```
 # Step 3: Install Dependencies
 ```
 pip install -r requirements.txt
